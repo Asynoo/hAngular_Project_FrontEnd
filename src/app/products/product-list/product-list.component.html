@@ -1,1 +1,5 @@
 <p style="font-size: 50px">Products</p>
+
+<ul *ngIf="products">
+  <li *ngFor="let product of products"> Id: {{product.id}}  -  Name: {{product.name}}</li>
+</ul>
