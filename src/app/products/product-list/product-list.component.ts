@@ -1,29 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductsService} from "../shared/products.service";
 import {ProductDto} from "../shared/product.dto";
-import {Subscription} from "rxjs";
+import {Observable} from "rxjs";
+import {catchError, delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-ToMo-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
   products: ProductDto[] | undefined;
-  private productSub: Subscription | undefined;
+  products$: Observable<ProductDto[]> | undefined;
+  public error: any;
 
   constructor(private _productService: ProductsService) {
 
   }
 
   ngOnInit(): void {
-    this.productSub = this._productService.getAll().subscribe(products => {this.products = products;});
-  }
-
-  ngOnDestroy(): void {
-    if (this.productSub){
-      this.productSub.unsubscribe();
-    }
+    this.products$ = this._productService.getAll().pipe(catchError(err => {this.error = err; throw err;}));
   }
 
 }

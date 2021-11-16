@@ -1,5 +1,9 @@
 <p style="font-size: 50px">Products</p>
 
-<ul *ngIf="products">
+<ul *ngIf="products$ | async as products else loading">
   <li *ngFor="let product of products"> Id: {{product.id}}  -  Name: {{product.name}}</li>
 </ul>
+<ng-template #loading>
+  <p *ngIf="!error else errorTemp">....loading</p>
+  <ng-template #errorTemp>{{error | json}}</ng-template>
+</ng-template>
