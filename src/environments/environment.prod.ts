@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://hangularproject.azurewebsites.net/'
+  api: 'https://hangularproject.azurewebsites.net',
 };

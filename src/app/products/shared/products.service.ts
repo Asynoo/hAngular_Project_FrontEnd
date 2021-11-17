@@ -12,6 +12,6 @@ export class ProductsService {
   constructor(private _http: HttpClient) {}
 
     getAll(): Observable<ProductDto[]> {
-    return this._http.get<ProductDto[]>(environment + '/api/Product');
+    return this._http.get<ProductDto[]>(environment.api + '/api/Product');
   }
 }
