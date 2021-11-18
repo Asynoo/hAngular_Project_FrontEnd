@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 align-items-end">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="username"
+                 class="form-label">Username: </label>
+          <input
+            id="username"
+            type="text"
+            formControlName="username"
+            class="form-control">
+        </div>
+
+        <div *ngIf="username && username.invalid && (username.dirty || username.touched)"
+             class="alert alert-danger">
+          <div *ngIf="username.errors?.required">
+            Username is required.
+          </div>
+          <div *ngIf="username.errors?.minlength">
+            Username must be at least 2 characters long.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            for="password"
+            class="form-label">Password: </label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="form-control">
+        </div>
+        <div *ngIf="password && password.invalid && (password.dirty || password.touched)"
+             class="alert alert-danger">
+          <div *ngIf="password.errors?.required">
+            Password is required.
+          </div>
+        </div>
+        <div class="float-right">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!loginForm.valid">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
