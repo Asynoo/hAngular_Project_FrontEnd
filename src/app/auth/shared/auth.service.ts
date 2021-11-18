@@ -13,6 +13,6 @@ export class AuthService {
 
   login(user: LoginUser): Observable<TokenDto> {
     return this.http
-      .post<TokenDto>("https://localhost:5001/api/Auth", user);
+      .post<TokenDto>("https://localhost:5001/api/Auth/Login", user);
   }
 }

@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem; margin: 15px">
+  <img class="card-img-top" src="https://officialpsds.com/imageview/7w/26/7w2685_large.png?1521316552"  alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Product details</h5>
+    <p class="card-text"> <p>HELLO ID: {{product.id}}</p><p>{{product.name}}</p>
+    <button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)" style="margin: 15px">Delete</button>
+    <button type="button" class="btn btn-dark" routerLink="/edit/{{product.id}}">Edit</button>  </div>
+</div>
